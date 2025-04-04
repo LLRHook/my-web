@@ -27,4 +27,4 @@ A privacy-focused web application that converts images to PDF files entirely in 
 Feel free to check out my projects and reach out if you'd like to collaborate!
 
 ---
-Last updated: April 2024
+Last updated: April 2025
