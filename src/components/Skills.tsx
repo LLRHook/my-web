@@ -3,7 +3,9 @@ import { FaJava, FaReact, FaDatabase, FaHtml5, FaCss3Alt, FaPython, FaDocker, Fa
 import { SiJquery, SiJira } from 'react-icons/si'
 import { motion } from 'framer-motion'
 
-const MotionBox = motion(Box)
+// Create motion components
+const MotionBox = motion.create(Box)
+const MotionSimpleGrid = motion.create(SimpleGrid)
 
 interface SkillCardProps {
   icon: React.ElementType;
@@ -22,69 +24,52 @@ const getProficiencyPercentage = (proficiency: string): number => {
   }
 }
 
-const SkillCard = ({ icon: Icon, name, proficiency, color, description }: SkillCardProps) => {
+const SkillCard = ({ icon: Icon, name, proficiency }: { icon: any, name: string, proficiency: number }) => {
   const bgColor = useColorModeValue('white', 'gray.800')
   const borderColor = useColorModeValue('gray.200', 'gray.700')
-  const glowColor = `${color}33`
-  const proficiencyPercentage = getProficiencyPercentage(proficiency)
 
   return (
-    <Tooltip
-      label={description || `${name} - ${proficiency} Level`}
-      placement="top"
-      hasArrow
+    <MotionBox
+      p={6}
+      bg={bgColor}
+      borderRadius="lg"
+      borderWidth="1px"
+      borderColor={borderColor}
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      gap={4}
+      cursor="pointer"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ 
+        scale: 1.05, 
+        boxShadow: "xl",
+        borderColor: "teal.400"
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 20
+      }}
     >
-      <MotionBox
-        p={4}
-        bg={bgColor}
-        borderWidth="1px"
-        borderColor={borderColor}
-        borderRadius="lg"
-        position="relative"
-        whileHover={{ y: -5, scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        transition={{ duration: 0.3 }}
-        _after={{
-          content: '""',
-          position: 'absolute',
-          top: '-2px',
-          left: '-2px',
-          right: '-2px',
-          bottom: '-2px',
-          background: `radial-gradient(circle at center, ${glowColor} 0%, transparent 70%)`,
-          zIndex: -1,
-          opacity: 0,
-          transition: 'all 0.3s',
-          borderRadius: 'lg',
-        }}
-        _hover={{
-          borderColor: color,
-          shadow: 'xl',
-          _after: {
-            opacity: 1,
-          }
-        }}
-      >
-        <VStack spacing={3}>
-          <Icon size="3em" color={color} />
-          <Text fontWeight="bold">{name}</Text>
-          <Box w="100%">
-            <HStack justify="space-between" mb={1}>
-              <Text fontSize="sm" color="gray.500">{proficiency}</Text>
-              <Text fontSize="sm" color="gray.500">{proficiencyPercentage}%</Text>
-            </HStack>
-            <Progress
-              value={proficiencyPercentage}
-              size="sm"
-              colorScheme={proficiencyPercentage >= 80 ? 'green' : proficiencyPercentage >= 60 ? 'blue' : 'orange'}
-              borderRadius="full"
-              hasStripe
-              isAnimated
-            />
-          </Box>
-        </VStack>
-      </MotionBox>
-    </Tooltip>
+      <Icon size="3em" />
+      <Text fontWeight="bold">{name}</Text>
+      <Box w="100%" h="4px" bg="gray.200" borderRadius="full" overflow="hidden">
+        <MotionBox
+          h="100%"
+          bg="teal.500"
+          borderRadius="full"
+          initial={{ width: 0 }}
+          animate={{ width: `${proficiency}%` }}
+          transition={{
+            duration: 1,
+            delay: 0.2,
+            ease: "easeOut"
+          }}
+        />
+      </Box>
+    </MotionBox>
   )
 }
 
@@ -164,18 +149,22 @@ const Skills = () => {
         <TabPanels>
           {Object.entries(categories).map(([category, skills]) => (
             <TabPanel key={category}>
-              <SimpleGrid columns={[1, 2, 3]} spacing={6}>
+              <MotionSimpleGrid
+                columns={[1, 2, 3]}
+                spacing={6}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
                 {skills.map((skill) => (
                   <SkillCard
                     key={skill.name}
                     icon={skill.icon}
                     name={skill.name}
-                    proficiency={skill.proficiency}
-                    color={skill.color}
-                    description={skill.description}
+                    proficiency={getProficiencyPercentage(skill.proficiency)}
                   />
                 ))}
-              </SimpleGrid>
+              </MotionSimpleGrid>
             </TabPanel>
           ))}
         </TabPanels>
