@@ -1,24 +1,15 @@
-import { ChakraProvider, Box } from '@chakra-ui/react'
-import { theme } from '@chakra-ui/theme'
+import { Box } from '@chakra-ui/react'
+import Navbar from './components/Navbar'
 import Home from './pages/Home'
-
-const config = {
-  initialColorMode: 'dark',
-  useSystemColorMode: false,
-}
-
-const customTheme = {
-  ...theme,
-  config,
-}
+import BackToTop from './components/BackToTop'
 
 function App() {
   return (
-    <ChakraProvider theme={customTheme}>
-      <Box minH="100vh">
-        <Home />
-      </Box>
-    </ChakraProvider>
+    <Box>
+      <Navbar />
+      <Home />
+      <BackToTop />
+    </Box>
   )
 }
 

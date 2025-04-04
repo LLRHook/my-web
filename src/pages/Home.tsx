@@ -1,7 +1,6 @@
 import { Box, Container, Heading, VStack, Text, Image, Flex, SimpleGrid, useColorModeValue, Button, Link, HStack, Tag } from '@chakra-ui/react'
 import { FaDownload, FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import Skills from '../components/Skills'
-import Navbar from '../components/Navbar'
 import profilePic from '../assets/IMG_6184.png'
 import resumePdf from '../assets/Victor_Ivanov_Resume_2025.pdf'
 
@@ -90,25 +89,22 @@ const Home = () => {
   ]
 
   return (
-    <>
-      <Navbar />
-      <Box
-        bg={bgColor}
-        color={textColor}
-        minH="100vh"
-        pt="60px"
-        pb={10}
-        backgroundImage={patternBg}
-        backgroundRepeat="repeat"
-      >
-        <Container maxW="container.lg">
-          <VStack spacing={8} align="stretch">
-            {/* Hero Section */}
+    <Box
+      bg={bgColor}
+      color={textColor}
+      minH="100vh"
+      backgroundImage={patternBg}
+      backgroundRepeat="repeat"
+      py={8}
+    >
+      <Container maxW="container.lg">
+        <VStack spacing={16} align="stretch">
+          {/* About Section */}
+          <Box id="about">
             <Flex
               direction={{ base: 'column', md: 'row' }}
               align="center"
               justify="center"
-              py={10}
               gap={8}
               bg={gradientBg}
               borderRadius="xl"
@@ -157,11 +153,24 @@ const Home = () => {
                 </Button>
               </VStack>
             </Flex>
+          </Box>
 
-            {/* Skills Section */}
-            <Skills />
+          {/* Skills Section */}
+          <Box id="skills">
+            <Box
+              bg={gradientBg}
+              borderRadius="xl"
+              p={6}
+              boxShadow="lg"
+              backdropFilter="blur(8px)"
+            >
+              <Heading as="h2" size="xl" mb={6}>Technical Skills</Heading>
+              <Skills />
+            </Box>
+          </Box>
 
-            {/* Projects Section */}
+          {/* Projects Section */}
+          <Box id="projects">
             <Box
               bg={gradientBg}
               borderRadius="xl"
@@ -179,10 +188,10 @@ const Home = () => {
                 ))}
               </SimpleGrid>
             </Box>
-          </VStack>
-        </Container>
-      </Box>
-    </>
+          </Box>
+        </VStack>
+      </Container>
+    </Box>
   )
 }
 
