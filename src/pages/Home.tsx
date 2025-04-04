@@ -82,9 +82,10 @@ const Home = () => {
     },
     {
       title: "Image to PDF Converter",
-      description: "A Python-based utility that converts various image formats to PDF while maintaining image quality and aspect ratio. Features include command-line interface, support for multiple image formats, and customizable output options.",
-      technologies: ["Python", "Pillow", "ReportLab"],
-      githubUrl: "https://github.com/LLRHook/image-to-pdf-converter"
+      description: "A privacy-focused web application that converts images to PDF files entirely in the browser. Features include drag & drop support, automatic image compression, mobile-friendly interface, and offline functionality. No server uploads required - all processing happens locally for maximum privacy and speed.",
+      technologies: ["React", "pdf-lib", "browser-image-compression", "GitHub Actions"],
+      githubUrl: "https://github.com/LLRHook/image-to-pdf-converter",
+      liveUrl: "https://LLRHook.github.io/image-to-pdf-converter"
     }
   ]
 
