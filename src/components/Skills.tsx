@@ -98,7 +98,7 @@ const Skills = () => {
   const selectedTabBorder = useColorModeValue('blue.500', 'blue.200')
   const tabHoverBg = useColorModeValue('blue.50', 'gray.600')
   const gradientBg = useColorModeValue(
-    'linear-gradient(180deg, rgba(237, 242, 247, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%)',
+    'linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(237, 242, 247, 0.95) 100%)',
     'linear-gradient(180deg, rgba(26, 32, 44, 0.8) 0%, rgba(45, 55, 72, 0.8) 100%)'
   )
 
@@ -114,9 +114,6 @@ const Skills = () => {
       backdropFilter="blur(8px)"
       p={6}
     >
-      <Heading as="h2" size="xl" mb={8} textAlign="center">
-        Technical Skills
-      </Heading>
       <Tabs isFitted variant="enclosed">
         <TabList mb="1em">
           {Object.keys(categories).map((category) => (
