@@ -5,5 +5,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   assetsInclude: ['**/*.pdf'],
-  base: '/my-web/'
+  base: '/my-web/',
+  build: {
+    outDir: 'docs',
+    assetsDir: 'assets',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      }
+    }
+  }
 })
