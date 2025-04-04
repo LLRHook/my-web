@@ -25,3 +25,6 @@ A privacy-focused web application that converts images to PDF files entirely in 
 - [GitHub Repository](https://github.com/LLRHook/image-to-pdf-converter)
 
 Feel free to check out my projects and reach out if you'd like to collaborate!
+
+---
+Last updated: April 2024
