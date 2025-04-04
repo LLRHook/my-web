@@ -1,4 +1,4 @@
-import { Box, Container, Heading, VStack, Text, Image, Flex, SimpleGrid, useColorModeValue, Button, Link, Icon, HStack, Tag } from '@chakra-ui/react'
+import { Box, Container, Heading, VStack, Text, Image, Flex, SimpleGrid, useColorModeValue, Button, Link, HStack, Tag } from '@chakra-ui/react'
 import { FaDownload, FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import Skills from '../components/Skills'
 import Navbar from '../components/Navbar'
