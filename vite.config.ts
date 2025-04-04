@@ -7,7 +7,7 @@ export default defineConfig({
   assetsInclude: ['**/*.pdf'],
   base: '/my-web/',
   build: {
-    outDir: 'docs',
+    outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
     rollupOptions: {
